@@ -1,0 +1,12 @@
+{
+    "001": {
+        "nombre_de_la_empresa": "Supplier Solutions",
+        "dirección": "Calle Falsa 345, Ciudad",
+        "telefono": "555-1234",
+        "contacto_principal": "Rodrigo Gómez",
+        "celular": "555-5678",
+        "correo_electronico": "rodrigo_gomez@suppliersolutions.com"
+    },
+
+}
+
