@@ -1,0 +1,10 @@
+{
+    "001": {
+        "codigo_proveedor": "001",
+        "fecha": "2024-01-15",
+        "materia_prima": "Algodón",
+        "cantidad": 1000,
+        "precio": 50.00
+    }
+
+}
