@@ -1,6 +1,22 @@
 import json
 import os
 import uuid
+from pathlib import Path
+
+
+RUTA_BASE = Path("./data")
+
+RUTA_BASE.mkdir(parents=True, exist_ok=True)
+
+ARCHIVOS = {
+    "clientes": RUTA_BASE/'clientes.json',
+    "materia_prima": RUTA_BASE/'materia_prima.json',
+    "productos_finales": RUTA_BASE/'productos_finales.json',
+    "proveedores": RUTA_BASE/'proveedores.json',
+    "transacciones_proveedor": RUTA_BASE/'transacciones_proveedor.json',
+    "ventas": RUTA_BASE/'ventas.json'
+}
+
 
 def _cargar_datos(archivo):
     """Lee y retorna los datos del archivo JSON. Ahora retorna un diccionario {}."""
@@ -12,10 +28,12 @@ def _cargar_datos(archivo):
     except json.JSONDecodeError:
         return {}
 
+
 def _guardar_datos(archivo, datos):
     """Guarda el diccionario maestro en el archivo JSON."""
     with open(archivo, 'w', encoding='utf-8') as file:
         json.dump(datos, file, indent=4, ensure_ascii=False)
+
 
 def crear(archivo, registro):
     """Añade un nuevo registro usando un UUID aleatorio como llave principal."""
@@ -28,14 +46,17 @@ def crear(archivo, registro):
     
     return nuevo_id, registro
 
+
 def leer_todos(archivo):
     """Devuelve el diccionario completo con todos los registros."""
     return _cargar_datos(archivo)
+
 
 def leer_por_id(archivo, id_registro):
     """Busca directamente la llave en el diccionario. Es súper rápido."""
     datos = _cargar_datos(archivo)
     return datos.get(id_registro)
+
 
 def actualizar(archivo, id_registro, nuevos_datos):
     """Actualiza un registro si su ID existe como llave en el diccionario."""
@@ -47,6 +68,7 @@ def actualizar(archivo, id_registro, nuevos_datos):
         return True
     return False
 
+
 def eliminar(archivo, id_registro):
     """Elimina directamente la llave del diccionario."""
     datos = _cargar_datos(archivo)
@@ -55,6 +77,7 @@ def eliminar(archivo, id_registro):
         _guardar_datos(archivo, datos)
         return True
     return False
+
 
 def buscar(archivo, parcial=False, **criterios):
     """
