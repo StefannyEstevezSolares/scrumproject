@@ -1,0 +1,11 @@
+{
+    "001": {
+        "nombre_cliente": "Nike",
+        "producto": "zapatos deportivos",
+        "cantidad": 50.00,
+        "precio_unitario": 500,
+        "total": 25000.00,
+        "fecha": "2026-04-15"
+    }
+
+}
