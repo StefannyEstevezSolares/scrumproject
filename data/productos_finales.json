@@ -1,0 +1,10 @@
+{
+    "001": {
+        "nombre": "zapatos deportivos",
+        "descripcion": "Zapatos diseñados para actividades deportivas, ofrecen comodidad y soporte.",
+        "precio_de_venta": 50.00,
+        "cantidad_en_stock": 500,
+        "fecha_fabricacion": "2024-01-15"
+    }
+
+}
