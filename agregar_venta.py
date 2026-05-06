@@ -218,3 +218,17 @@ def agregar_venta():
     print(f"Fecha de entrega: {fecha_entrega}")
     print(f"Estado de la venta: {estado}")
 
+def cambiar_estado():
+    ventas = db.leer_todos(db.ARCHIVOS["ventas"])
+
+    id_venta = input("Ingrese el id de la venta: ").strip()
+
+    if id_venta in ventas:
+        estado = estado_venta()
+
+    nuevo_dato = {
+        "estado": estado
+    }
+
+    db.actualizar(db.ARCHIVOS["ventas"], id_venta, nuevo_dato)
+
