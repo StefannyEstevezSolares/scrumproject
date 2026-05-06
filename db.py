@@ -14,7 +14,8 @@ ARCHIVOS = {
     "productos_finales": RUTA_BASE/'productos_finales.json',
     "proveedores": RUTA_BASE/'proveedores.json',
     "transacciones_proveedor": RUTA_BASE/'transacciones_proveedor.json',
-    "ventas": RUTA_BASE/'ventas.json'
+    "ventas": RUTA_BASE/'ventas.json',
+    "orden_produccion": RUTA_BASE/'orden_produccion.json'
 }
 
 
