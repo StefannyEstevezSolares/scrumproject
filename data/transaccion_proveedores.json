@@ -1,10 +1,16 @@
 {
-    "001": {
-        "codigo_proveedor": "001",
-        "fecha": "2024-01-15",
-        "materia_prima": "Algodón",
-        "cantidad": 1000,
-        "precio": 50.00
-    }
-
+  "trans-001": {
+    "codigo_proveedor": "prov-001",
+    "codigo_materia": "mat-001",
+    "cantidad": 10,
+    "precio": 3505.00,
+    "fecha": "2026-04-15"
+  },
+  "trans-002": {
+    "codigo_proveedor": "prov-002",
+    "codigo_materia": "mat-002",
+    "cantidad": 5,
+    "precio": 225.00,
+    "fecha": "2026-04-20"
+  }
 }

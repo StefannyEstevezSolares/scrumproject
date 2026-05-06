@@ -1,0 +1,23 @@
+{
+  "op-001": {
+    "producto": "Camisa Azul Clásica",
+    "codigos_materias_primas": [
+      "mat-001",
+      "mat-002"
+    ],
+    "cantidad": 200,
+    "fecha_inicio": "2026-04-25",
+    "fecha_finalizacion": "2026-05-02",
+    "estado": "Completado"
+  },
+  "op-002": {
+    "producto": "Blusa Azul de Verano",
+    "codigos_materias_primas": [
+      "mat-001"
+    ],
+    "cantidad": 100,
+    "fecha_inicio": "2026-05-03",
+    "fecha_finalizacion": "2026-05-06",
+    "estado": "En Proceso"
+  }
+}
