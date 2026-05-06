@@ -96,5 +96,3 @@ def input_producto_final():
     crear(ARCHIVOS["productos_finales"], registro)
 
     print("\nProducto final registrado correctamente")
-
-input_producto_final()
