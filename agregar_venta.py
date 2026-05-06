@@ -160,12 +160,32 @@ def validar_fecha():
 
 
 def estado_venta():
-
-
+    print("--- ESTADO DE Venta ---")
     estados = ["Pendiente", "En Proceso", "Enviado", "Entregado", "Cancelado"]
 
+    i = 0
+    for estado in estados:
+        print(f"{i}. {estado}")
+        i += 1
 
-    return estados[0]
+    while True:
+        try:
+            opci = int(input("Ingrese una opción: ").strip())
+
+            if opci == 0:
+                return estados[0]
+            elif opci == 1:
+                return estados[1]
+            elif opci == 2:
+                return estados[2]
+            elif opci == 3:
+                return estados[3]
+            elif opcio == 4:
+                return estados[4]
+            else: 
+                print("Error: Opción ingresada es inválida")
+        except ValueError:
+            print("Error: Solo se pueden ingresar números enteros")
 
 
 def agregar_venta():
@@ -197,7 +217,4 @@ def agregar_venta():
     print(f"Fecha de inicio: {fecha_creacion}")
     print(f"Fecha de entrega: {fecha_entrega}")
     print(f"Estado de la venta: {estado}")
- 
-
-agregar_venta()
 
