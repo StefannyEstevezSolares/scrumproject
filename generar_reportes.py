@@ -62,7 +62,7 @@ def productos_finales():
         titulo = "Reporte de Productos Finales"
         encabezados = ["ID", "Nombre", "Descripción", "Precio de Venta (Q)", "Cantidad en Stock", "Fecha de Fabricación"]
         alineaciones = ["center", "left", "left", "right", "center", "center"]
-        filas = [[id, p["nombre"], p["descripcion"], f'Q {p["precio_de_venta"]}', p["cantidad_en_stock"], p["fecha_fabricacion"]] for id, p in productos.items()]
+        filas = [[id, p["nombre"], p["descripcion"], f'Q {p["precio_venta"]}', p["stock"], p["fecha_fabricacion"]] for id, p in productos.items()]
 
         generar_tabla(titulo, encabezados, filas, alineaciones)
 
@@ -167,3 +167,7 @@ def historial_compras(cliente_id, nombre_cliente):
     generar_tabla(titulo, encabezados, filas, alineaciones)
 
     input("\nPresiona Enter para regresar a la lista de clientes...\n")
+
+
+
+productos_finales()

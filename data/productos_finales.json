@@ -4,7 +4,7 @@
     "descripcion": "Camisa de botones manga larga 100% algodón",
     "precio_venta": 185.00,
     "stock": 150,
-    "fecha_fabricación": "2026-05-02",
+    "fecha_fabricacion": "2026-05-02",
     "fecha_vencimiento (si aplica)": null
   },
   "prod-002": {
@@ -12,7 +12,7 @@
     "descripcion": "Blusa sin mangas de algodón con detalles de botones",
     "precio_venta": 140.00,
     "stock": 80,
-    "fecha_fabricación": "2026-05-04",
+    "fecha_fabricacion": "2026-05-04",
     "fecha_vencimiento (si aplica)": null
   }
 }
