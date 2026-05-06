@@ -16,7 +16,7 @@ def input_materia_prima():
         return
 
 
-    proveedores = leer_todos("proveedores.json")
+    proveedores = leer_todos(ARCHIVOS["proveedores"])
 
     print("\nProveedores registrados:")
 
