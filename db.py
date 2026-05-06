@@ -91,28 +91,27 @@ def buscar(archivo, parcial=False, **criterios):
 
     resultados = {}
     for id_registro, registro in datos.items():
-        coincide = True
+        coincide_alguno = False
         
         for clave, valor_buscado in criterios.items():
             valor_guardado = registro.get(clave)
             
             if valor_guardado is None:
-                coincide = False
-                break
+                continue
                 
             texto_guardado = str(valor_guardado).lower()
             texto_buscado = str(valor_buscado).lower()
             
             if parcial:
-                if texto_buscado not in texto_guardado:
-                    coincide = False
+                if texto_buscado in texto_guardado:
+                    coincide_alguno = True
                     break
             else:
-                if texto_guardado != texto_buscado:
-                    coincide = False
+                if texto_guardado == texto_buscado:
+                    coincide_alguno = True
                     break
                     
-        if coincide:
+        if coincide_alguno:
             resultados[id_registro] = registro
             
     return resultados
