@@ -85,3 +85,44 @@ def productos_finales():
             print("\nNo se encontraron productos que coincidan con la búsqueda.")
             input("Presiona Enter para continuar...\n")
             productos = {}
+
+
+def listar_clientes():
+    """Genera un reporte de clientes y busqueda."""
+    clientes = {}
+    while True:
+        limpiar_pantalla()
+        if not clientes:
+            clientes = buscar(ARCHIVOS["clientes"], parcial=True, nombre_de_la_empresa="", contacto_principal="")
+            if not clientes:
+                limpiar_pantalla()
+                print("\nNo hay clientes registrados.")
+                input("Presiona Enter para continuar...\n")
+                return
+
+        titulo = "Reporte de Clientes"
+        encabezados = ["NO.", "ID", "Nombre de la Empresa", "Dirección", "Teléfono", "Contacto Principal", "Celular", "Correo Electrónico"]
+        alineaciones = ["center", "left", "left", "center", "left", "center", "left"]
+        filas = [[i, id, c["nombre_de_la_empresa"], c["dirección"], c["telefono"], c["contacto_principal"], c["celular"], c["correo_electronico"]] for i, (id, c) in enumerate(clientes.items(), start=1)]
+
+        generar_tabla(titulo, encabezados, filas, alineaciones)
+
+        print ("\nPuedes buscar un cliente por Nombre de la Empresa, Contacto Principal o Correo.")
+        buscar_input = input("Ingresa el término de búsqueda (o ingresa -Volver para regresar): ").strip().lower()
+
+        if buscar_input == "":
+            limpiar_pantalla()
+            print("\nLa búsqueda no puede estar vacía.")
+            input("Presiona Enter para continuar...\n")
+            clientes = {}
+            continue
+        if buscar_input == "-volver":
+            return
+        
+        clientes = buscar(ARCHIVOS["clientes"], parcial=True, nombre_de_la_empresa=buscar_input, contacto_principal=buscar_input, correo_electronico=buscar_input)
+
+        if not clientes:
+            limpiar_pantalla()
+            print("\nNo se encontraron clientes que coincidan con la búsqueda.")
+            input("Presiona Enter para continuar...\n")
+            clientes = {}
