@@ -103,9 +103,6 @@ def input_materia_prima():
 
     }
 
-    crear("materia_prima.json", registro)
+    crear(ARCHIVOS["materia_prima"], registro)
 
     print("\nMateria prima registrada correctamente")
-
-
-input_materia_prima()
