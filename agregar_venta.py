@@ -162,7 +162,7 @@ def estado_venta():
                 return estados[2]
             elif opci == 3:
                 return estados[3]
-            elif opcio == 4:
+            elif opci == 4:
                 return estados[4]
             else: 
                 print("Error: Opción ingresada es inválida")
