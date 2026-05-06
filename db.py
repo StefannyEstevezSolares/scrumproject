@@ -52,6 +52,7 @@ def leer_todos(archivo):
     """Devuelve el diccionario completo con todos los registros."""
     return _cargar_datos(archivo)
 
+#leer_todos(ARCHIVO["proveedores"])
 
 def leer_por_id(archivo, id_registro):
     """Busca directamente la llave en el diccionario. Es súper rápido."""
