@@ -76,8 +76,7 @@ def input_proveedor():
 
     }
 
-    crear("proveedores.json", registro)
+    crear(ARCHIVOS["proveedores"], registro)
 
     print("\nProveedor registrado correctamente")
 
-input_proveedor()
