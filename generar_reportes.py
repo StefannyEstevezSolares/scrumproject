@@ -168,3 +168,59 @@ def historial_compras(cliente_id, nombre_cliente):
 
     input("\nPresiona Enter para regresar a la lista de clientes...\n")
 
+
+def ventas():
+    """Genera un reporte de ventas y busqueda."""
+    ventas = {}
+    while True:
+        limpiar_pantalla()
+        if not ventas:
+            ventas = buscar(ARCHIVOS["ventas"], parcial=True, codigo_cliente="", fecha_inicio="", fecha_entrega="", estado="")
+            if not ventas:
+                limpiar_pantalla()
+                print("\nNo hay ventas registradas.")
+                input("Presiona Enter para continuar...\n")
+                return
+
+        titulo = "Reporte de Ventas"
+        encabezados = ["ID", "Código Cliente", "Nombre Cliente", "Productos", "Total (Q)", "Fecha de Inicio", "Fecha de Entrega", "Estado"]
+        alineaciones = ["left", "left", "left", "left", "right", "center", "center", "center"]
+        filas = []
+
+        for id, venta in ventas.items():
+            cliente = leer_por_id(ARCHIVOS["clientes"], venta["codigo_cliente"])
+            nombre_cliente = cliente["nombre_empresa"] if cliente else "Desconocido"
+            productos_comprados = []
+            for prod_id, cantidad in venta["codigos_productos"].items():
+                producto = leer_por_id(ARCHIVOS["productos_finales"], prod_id)
+                if producto:
+                    productos_comprados.append(f"{producto['nombre']} (x{cantidad})")
+            
+            filas.append([id, venta["codigo_cliente"], nombre_cliente, "\n".join(productos_comprados), f'Q {venta["total"]:,}', venta["fecha_inicio"], venta["fecha_entrega"], venta["estado"]])
+
+        generar_tabla(titulo, encabezados, filas, alineaciones)
+
+        print ("\nPuedes buscar una venta por Nombre de Cliente, Fechas o Estado.")
+        buscar_input = input("Ingresa el término de búsqueda (o ingresa -Volver para regresar): ").strip().lower()
+
+        if buscar_input == "":
+            limpiar_pantalla()
+            print("\nLa búsqueda no puede estar vacía.")
+            input("Presiona Enter para continuar...\n")
+            ventas = {}
+            continue
+        if buscar_input == "-volver":
+            return
+
+        clientes_encontrados = buscar(ARCHIVOS["clientes"], parcial=True, nombre_empresa=buscar_input)
+
+        ventas = buscar(ARCHIVOS["ventas"], parcial=True, fecha_inicio=buscar_input, fecha_entrega=buscar_input, estado=buscar_input)
+        for cliente_id in clientes_encontrados.keys():
+            ventas_cliente = buscar(ARCHIVOS["ventas"], parcial=True, codigo_cliente=cliente_id)
+            ventas.update(ventas_cliente)
+
+        if not ventas:
+            limpiar_pantalla()
+            print("\nNo se encontraron ventas que coincidan con la búsqueda.")
+            input("Presiona Enter para continuar...\n")
+            ventas = {}
