@@ -168,6 +168,3 @@ def historial_compras(cliente_id, nombre_cliente):
 
     input("\nPresiona Enter para regresar a la lista de clientes...\n")
 
-
-
-productos_finales()
