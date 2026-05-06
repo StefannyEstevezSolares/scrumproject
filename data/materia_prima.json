@@ -1,12 +1,20 @@
 {
-    "001": {
-        "nombre": "Algodón",
-        "descripcion": "Fibra natural suave y transpirable, ideal para prendas de vestir.",
-        "proveedor": "Algodones del Mundo S.A.",
-        "cantidad_en_stock": 500,
-        "precio_por_unidad": 2.50,
-        "fecha_adquisicion": "2024-01-15",
-        "fecha_vencimiento": "2025-01-15"
-    }
-
+  "mat-001": {
+    "nombre": "Rollo de Tela Algodón Azul",
+    "descripcion": "Tela 100% algodón premium, 50 metros",
+    "codigo_proveedor": "prov-001",
+    "stock": 45,
+    "precio_unidad": 350.50,
+    "fecha_adquisicion": "2026-04-15",
+    "fecha_vencimiento (si aplica)": null
+  },
+  "mat-002": {
+    "nombre": "Caja de Botones Blancos",
+    "descripcion": "Caja con 1000 botones plásticos de 4 agujeros",
+    "codigo_proveedor": "prov-002",
+    "stock": 12,
+    "precio_unidad": 45.00,
+    "fecha_adquisicion": "2026-04-20",
+    "fecha_vencimiento (si aplica)": null
+  }
 }

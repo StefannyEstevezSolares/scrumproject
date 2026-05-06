@@ -1,12 +1,18 @@
 {
-    "001": {
-        "nombre_de_la_empresa": "Clothes Solutions",
-        "dirección": "Calle Falsa 123, Ciudad",
-        "telefono": "555-1234",
-        "contacto_principal": "Juan Pérez",
-        "celular": "555-5678",
-        "correo_electronico": "juan_perez@clothesolutions.com"
-    }
-
+  "cli-001": {
+    "nombre_empresa": "Boutique Moda Joven",
+    "direccion": "Centro Comercial Galerías, Local 12",
+    "telefono": "2333-8899",
+    "contacto_principal": "Ana Rodríguez",
+    "celular": "5566-7788",
+    "email": "compras@modajoven.com"
+  },
+  "cli-002": {
+    "nombre_empresa": "Tiendas Departamentales El Sol",
+    "direccion": "Blvd. Principal 45-67, Zona 10",
+    "telefono": "2211-0000",
+    "contacto_principal": "Mario Castillo",
+    "celular": "3322-1100",
+    "email": "proveedores@elsol.com"
+  }
 }
-
