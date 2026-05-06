@@ -2,6 +2,14 @@ from rich.console import Console
 from rich.table import Table
 from rich import box
 from rich.text import Text
+import os
+
+def limpiar_pantalla():
+    """Limpia la pantalla de la consola."""
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 def generar_tabla(titulo, encabezados, datos, alineaciones=None):
