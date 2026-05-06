@@ -3,7 +3,7 @@ from rich.table import Table
 from rich import box
 from rich.text import Text
 import os
-from db import ARCHIVOS, buscar
+from db import ARCHIVOS, buscar, leer_por_id
 
 
 def limpiar_pantalla():
@@ -101,13 +101,14 @@ def listar_clientes():
                 return
 
         titulo = "Reporte de Clientes"
-        encabezados = ["NO.", "ID", "Nombre de la Empresa", "Dirección", "Teléfono", "Contacto Principal", "Celular", "Correo Electrónico"]
+        encabezados = ["#", "ID", "Nombre de la Empresa", "Dirección", "Teléfono", "Contacto Principal", "Celular", "Correo Electrónico"]
         alineaciones = ["center", "left", "left", "center", "left", "center", "left"]
-        filas = [[i, id, c["nombre_de_la_empresa"], c["dirección"], c["telefono"], c["contacto_principal"], c["celular"], c["correo_electronico"]] for i, (id, c) in enumerate(clientes.items(), start=1)]
+        filas = [[i, id, c["nombre_empresa"], c["direccion"], c["telefono"], c["contacto_principal"], c["celular"], c["email"]] for i, (id, c) in enumerate(clientes.items(), start=1)]
 
         generar_tabla(titulo, encabezados, filas, alineaciones)
 
         print ("\nPuedes buscar un cliente por Nombre de la Empresa, Contacto Principal o Correo.")
+        print("Para ver el historial de compras de un cliente, ingresa el número correspondiente a su fila. ej: #3")
         buscar_input = input("Ingresa el término de búsqueda (o ingresa -Volver para regresar): ").strip().lower()
 
         if buscar_input == "":
@@ -116,8 +117,24 @@ def listar_clientes():
             input("Presiona Enter para continuar...\n")
             clientes = {}
             continue
+
         if buscar_input == "-volver":
             return
+        
+        if buscar_input.startswith("#"):
+            try:
+                index = int(buscar_input[1:]) - 1
+                if 0 <= index < len(filas):
+                    cliente_id = filas[index][1]
+                    nombre = filas[index][2]
+                    historial_compras(cliente_id, nombre)
+                else:
+                    raise ValueError
+            except ValueError:
+                limpiar_pantalla()
+                print("\nNúmero de fila inválido.")
+                input("Presiona Enter para continuar...\n")
+            continue
         
         clientes = buscar(ARCHIVOS["clientes"], parcial=True, nombre_de_la_empresa=buscar_input, contacto_principal=buscar_input, correo_electronico=buscar_input)
 
@@ -126,3 +143,27 @@ def listar_clientes():
             print("\nNo se encontraron clientes que coincidan con la búsqueda.")
             input("Presiona Enter para continuar...\n")
             clientes = {}
+
+
+def historial_compras(cliente_id, nombre_cliente):
+    """Genera un reporte del historial de compras de un cliente."""
+    limpiar_pantalla()
+    compras_usuario = buscar(ARCHIVOS["ventas"], codigo_cliente=cliente_id)
+
+    titulo = f'Historial de Compras del Cliente: {nombre_cliente}'
+    encabezados = ["ID", "Productos Comprados", "Total (Q)", "Fecha de Inicio", "Fecha de Entrega", "Estado"]
+    alineaciones = ["left", "left", "right", "center", "center", "center"]
+    filas = []
+
+    for id, compra in compras_usuario.items():
+        productos_comprados = []
+        for prod_id, cantidad in compra["codigos_productos"].items():
+            producto = leer_por_id(ARCHIVOS["productos_finales"], prod_id)
+            if producto:
+                productos_comprados.append(f"{producto['nombre']} (x{cantidad})")
+        
+        filas.append([id, "\n".join(productos_comprados), f'Q {compra["total"]:,}', compra["fecha_inicio"], compra["fecha_entrega"], compra["estado"]])
+
+    generar_tabla(titulo, encabezados, filas, alineaciones)
+
+    input("\nPresiona Enter para regresar a la lista de clientes...\n")
