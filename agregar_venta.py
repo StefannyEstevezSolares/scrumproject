@@ -2,7 +2,6 @@ import db
 import validaciones_utils
 import os
 
-
 def limpiar_pantalla():
     """Limpia la pantalla de la consola."""
     if os.name == 'nt':
@@ -10,14 +9,8 @@ def limpiar_pantalla():
     else:
         os.system('clear')
 
-
-
-
 def validar_cliente():
     clientes = db.leer_todos(db.ARCHIVOS["clientes"])
-
-
-
 
     if len(clientes) == 0:
        print("Error: No hay clientes registrados")
@@ -25,16 +18,13 @@ def validar_cliente():
    
     print("--- CLIENTES ---")
 
-
     id_cliente = [id for id in clientes]
     contador = 0
 
 
     for id in clientes:
-       
        print(f"{contador}. {clientes[id]['nombre_empresa']}")
        contador += 1
-
 
     codigo_cliente = None
    
@@ -51,27 +41,21 @@ def validar_cliente():
         except ValueError:
             print("Error: Solo se aceptan números")
 
-
 def solicitar_producto():
     productos = db.leer_todos(db.ARCHIVOS["productos_finales"])
-
 
     if len(productos) == 0:
         print("Error: No hay productos registrados")
         return
 
-
     print("--- PRODUCTOS ---")
-
 
     id_producto = [id for id in productos]
     contador = 0
 
-
     for id in productos:
         print(f"{contador}. {productos[id]['nombre']}")
         contador += 1
-
 
     while True:
         try:
@@ -85,10 +69,8 @@ def solicitar_producto():
         except ValueError:
             print("Error: Solo se permiten números enteros")
 
-
     codigos_productos = {}
     total = 0
-
 
     for i in range(cantidad_productos):
         calculo = 0
@@ -105,19 +87,19 @@ def solicitar_producto():
             except ValueError:
                 print("Error: Solo se aceptan números")
 
-
         while True:
             try:
                 cantidad = int(input("Ingrese la cantidad deseada: ").strip())
 
-
                 if cantidad <= 0:
                     print("Error: Solo se permiten numeros mayores a 0")
                     continue
-
-
+                
                 stock = productos[producto_seleccionado]["stock"]
 
+                if stock == 0:
+                    print("Error: Ya no hay stock de ese producto")
+                    return None,None
 
                 if cantidad > stock:
                     print("Error: La cantidad que desea supera a la cantidad en stock")
@@ -191,10 +173,13 @@ def estado_venta():
 def agregar_venta():
     print("--- REGISTRO DE VENTA ---")
     cliente = validar_cliente()
-    codigos_productos, total= solicitar_producto()
+    codigos_productos, total = solicitar_producto()
+    if codigos_productos == None and total == None:
+        input("\nPresione enter para continuar")
+        return
+    
     fecha_creacion, fecha_entrega = validar_fecha()
     estado = estado_venta()
-
 
     venta = {
         "codigo_cliente": cliente,
@@ -205,9 +190,15 @@ def agregar_venta():
         "estado": estado
     }
 
+    for id_producto, valor in codigos_productos.items():
+        datos_productos = db.leer_por_id(db.ARCHIVOS["productos_finales"], id_producto)
+        stock_actual = datos_productos["stock"]
+        stock_nuevo = {
+            "stock": stock_actual - valor
+        }
+        db.actualizar(db.ARCHIVOS["productos_finales"], id_producto, stock_nuevo)
 
     id_venta, _ = db.crear(db.ARCHIVOS["ventas"], venta)
-
 
     limpiar_pantalla()
     print("Confirmacion de datos")
@@ -217,6 +208,7 @@ def agregar_venta():
     print(f"Fecha de inicio: {fecha_creacion}")
     print(f"Fecha de entrega: {fecha_entrega}")
     print(f"Estado de la venta: {estado}")
+    input("\nPresione enter para continuar")
 
 def cambiar_estado():
     ventas = db.leer_todos(db.ARCHIVOS["ventas"])
@@ -231,4 +223,3 @@ def cambiar_estado():
     }
 
     db.actualizar(db.ARCHIVOS["ventas"], id_venta, nuevo_dato)
-
