@@ -222,3 +222,4 @@ def menu_reportes_funcional():
 
         except:
             print("Ingrese un valor válido")
+

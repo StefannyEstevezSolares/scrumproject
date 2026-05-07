@@ -171,5 +171,3 @@ def input_transaccion_proveedores():
 
 
     print("\nTransacción registrada correctamente")
-
-input_transaccion_proveedores()
