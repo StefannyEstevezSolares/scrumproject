@@ -149,6 +149,11 @@ def historial_compras(cliente_id, nombre_cliente):
     limpiar_pantalla()
     compras_usuario = buscar(ARCHIVOS["ventas"], codigo_cliente=cliente_id)
 
+    if not compras_usuario:
+        print(f"\nNo se encontraron compras para el cliente {nombre_cliente}.")
+        input("Presiona Enter para regresar a la lista de clientes...\n")
+        return
+
     titulo = f'Historial de Compras del Cliente: {nombre_cliente}'
     encabezados = ["ID", "Productos Comprados", "Total (Q)", "Fecha de Inicio", "Fecha de Entrega", "Estado"]
     alineaciones = ["left", "left", "right", "center", "center", "center"]
@@ -355,5 +360,3 @@ def historial_transacciones(proveedor_id, nombre_proveedor):
     generar_tabla(titulo, encabezados, filas, alineaciones)
 
     input("\nPresiona Enter para regresar a la lista de proveedores...\n")
-
-listar_proveedores()
