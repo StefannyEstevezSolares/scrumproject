@@ -44,8 +44,9 @@ def menu_proveedores():
             INGRESE UN NÚMERO DEL MENÚ PARA CONTINUAR:
           
           1. Registrar a un proveedor nuevo
-          2. Enlistar historial de proveedores
-          3. Volver
+          2. Registrar transaccion de proveedores
+          3. Enlistar historial de proveedores
+          4. Volver
 
           
 =================================================================
