@@ -13,7 +13,6 @@ def limpiar_pantalla():
     else:
         os.system('clear')
 
-
 def generar_tabla(titulo, encabezados, datos, alineaciones=None):
     """
     Genera una tabla
@@ -224,3 +223,54 @@ def ventas():
             print("\nNo se encontraron ventas que coincidan con la búsqueda.")
             input("Presiona Enter para continuar...\n")
             ventas = {}
+
+def materia_prima():
+    materia_prima = {}
+    while True:
+        limpiar_pantalla()
+        if not materia_prima:
+            materia_prima = buscar(ARCHIVOS["materia_prima"], parcial=True, nombre="", fecha_adquisicion="", fecha_vencimiento= "", codigo_proveedor = "")
+            if not materia_prima:
+                limpiar_pantalla()
+                print("\nNo hay materia prima registradas.")
+                input("Presiona Enter para continuar...\n")
+                return
+
+        titulo = "Reporte de Materia Prima"
+        encabezados = ["ID", "Nombre de la materia prima", "Descripción", "Nombre Proveedor", "Código del proveedor", "Stock", "Precio Unidad", "Fecha de adquisición", "Fecha de vencimiento"]
+        alineaciones = ["left", "center", "center", "center", "center", "center", "center", "center",]
+
+        filas = []
+
+        for id, materia in materia_prima.items():
+            proveedor = leer_por_id(ARCHIVOS["proveedores"], materia["codigo_proveedor"])
+            nombre_empresa = proveedor["nombre_empresa"] if proveedor else "Desconocido"
+            
+            filas.append([id, materia["nombre"], materia["descripcion"], nombre_empresa, materia["codigo_proveedor"], materia["stock"], materia["precio_unidad"], materia["fecha_adquisicion"], materia["fecha_vencimiento (si aplica)"]])
+        
+        generar_tabla(titulo, encabezados, filas, alineaciones)
+
+        print ("\nPuedes buscar una materia prima por Fecha de adquisición, codigo_proveedor o por materia prima.")
+        buscar_input = input("Ingresa el término de búsqueda (o ingresa -Volver para regresar): ").strip().lower()
+
+        if buscar_input == "":
+            limpiar_pantalla()
+            print("\nLa búsqueda no puede estar vacía.")
+            input("Presiona Enter para continuar...\n")
+            materia_prima = {}
+            continue
+        if buscar_input == "-volver":
+            return
+
+        proveedores_encontrados = buscar(ARCHIVOS["proveedores"], parcial=True, id =buscar_input)
+        materia_prima = buscar(ARCHIVOS["materia_prima"], parcial=True, nombre = buscar_input, fecha_adquisicion=buscar_input, codigo_proveedor = buscar_input)
+
+        for proveedor_id in proveedores_encontrados.keys():
+            materias_prima = buscar(ARCHIVOS["materia_prima"], parcial=True, codigo_proveedor=proveedor_id)
+            materia_prima.update(materias_prima)
+
+        if not materia_prima:
+            limpiar_pantalla()
+            print("\nNo se encontraron materias primas que coincidan con la búsqueda.")
+            input("Presiona Enter para continuar...\n")
+            materia_prima = {}
