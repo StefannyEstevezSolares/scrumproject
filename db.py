@@ -13,7 +13,7 @@ ARCHIVOS = {
     "materia_prima": RUTA_BASE/'materia_prima.json',
     "productos_finales": RUTA_BASE/'productos_finales.json',
     "proveedores": RUTA_BASE/'proveedores.json',
-    "transacciones_proveedor": RUTA_BASE/'transacciones_proveedor.json',
+    "transaccion_proveedores": RUTA_BASE/'transaccion_proveedores.json',
     "ventas": RUTA_BASE/'ventas.json',
     "orden_produccion": RUTA_BASE/'orden_produccion.json'
 }
