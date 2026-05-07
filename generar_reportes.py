@@ -274,3 +274,44 @@ def materia_prima():
             print("\nNo se encontraron materias primas que coincidan con la búsqueda.")
             input("Presiona Enter para continuar...\n")
             materia_prima = {}
+
+def listar_proveedores():
+    """Genera un reporte de proveedores y busqueda."""
+    proveedores = {}
+    while True:
+        limpiar_pantalla()
+        if not proveedores:
+            proveedores = buscar(ARCHIVOS["proveedores"], parcial=True, nombre_empresa="", contacto_principal="")
+            if not proveedores:
+                limpiar_pantalla()
+                print("\nNo hay proveedores registrados.")
+                input("Presiona Enter para continuar...\n")
+                return
+
+        titulo = "Reporte de Proveedores"
+        encabezados = ["ID", "Nombre de la Empresa", "Dirección", "Teléfono", "Contacto Principal", "Celular", "Correo Electrónico"]
+        alineaciones = ["center", "left", "left", "center", "left", "center", "left"]
+        filas = [[id, c["nombre_empresa"], c["direccion"], c["telefono"], c["contacto_principal"], c["celular"], c["email"]] for i, (id, c) in enumerate(proveedores.items(), start=1)]
+
+        generar_tabla(titulo, encabezados, filas, alineaciones)
+
+        print ("\nPuedes buscar un proveedores por Nombre de la Empresa, Contacto Principal o Correo.")
+        buscar_input = input("Ingresa el término de búsqueda (o ingresa -Volver para regresar): ").strip().lower()
+
+        if buscar_input == "":
+            limpiar_pantalla()
+            print("\nLa búsqueda no puede estar vacía.")
+            input("Presiona Enter para continuar...\n")
+            proveedores = {}
+            continue
+
+        if buscar_input == "-volver":
+            return
+        
+        proveedores = buscar(ARCHIVOS["proveedores"], parcial=True, nombre_empresa=buscar_input, contacto_principal=buscar_input, email=buscar_input)
+
+        if not proveedores:
+            limpiar_pantalla()
+            print("\nNo se encontraron proveedores que coincidan con la búsqueda.")
+            input("Presiona Enter para continuar...\n")
+            proveedores = {}
