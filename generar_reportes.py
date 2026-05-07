@@ -291,11 +291,12 @@ def listar_proveedores():
         titulo = "Reporte de Proveedores"
         encabezados = ["ID", "Nombre de la Empresa", "Dirección", "Teléfono", "Contacto Principal", "Celular", "Correo Electrónico"]
         alineaciones = ["center", "left", "left", "center", "left", "center", "left"]
-        filas = [[id, c["nombre_empresa"], c["direccion"], c["telefono"], c["contacto_principal"], c["celular"], c["email"]] for i, (id, c) in enumerate(proveedores.items(), start=1)]
+        filas = [[i, id, c["nombre_empresa"], c["direccion"], c["telefono"], c["contacto_principal"], c["celular"], c["email"]] for i, (id, c) in enumerate(proveedores.items(), start=1)]
 
         generar_tabla(titulo, encabezados, filas, alineaciones)
 
         print ("\nPuedes buscar un proveedores por Nombre de la Empresa, Contacto Principal o Correo.")
+        print("Para ver el historial de transacciones de un proveedor, ingresa el número correspondiente a su fila. ej: #3")
         buscar_input = input("Ingresa el término de búsqueda (o ingresa -Volver para regresar): ").strip().lower()
 
         if buscar_input == "":
@@ -307,6 +308,21 @@ def listar_proveedores():
 
         if buscar_input == "-volver":
             return
+
+        if buscar_input.startswith("#"):
+            try:
+                index = int(buscar_input[1:]) - 1
+                if 0 <= index < len(filas):
+                    proveedor_id = filas[index][1]
+                    nombre = filas[index][2]
+                    historial_transacciones(proveedor_id, nombre)
+                else:
+                    raise ValueError
+            except ValueError:
+                limpiar_pantalla()
+                print("\nNúmero de fila inválido.")
+                input("Presiona Enter para continuar...\n")
+            continue
         
         proveedores = buscar(ARCHIVOS["proveedores"], parcial=True, nombre_empresa=buscar_input, contacto_principal=buscar_input, email=buscar_input)
 
@@ -315,3 +331,29 @@ def listar_proveedores():
             print("\nNo se encontraron proveedores que coincidan con la búsqueda.")
             input("Presiona Enter para continuar...\n")
             proveedores = {}
+
+def historial_transacciones(proveedor_id, nombre_proveedor):
+    """Genera un reporte del historial de transacciones de un proveedor."""
+    limpiar_pantalla()
+    transacciones_proveedor = buscar(ARCHIVOS["transaccion_proveedores"], codigo_proveedor=proveedor_id)
+
+    if not transacciones_proveedor:
+        print(f"\nNo se encontraron transacciones para el proveedor {nombre_proveedor}.")
+        input("Presiona Enter para regresar a la lista de proveedores...\n")
+        return
+    
+    titulo = f'Historial de Transacciones del Proveedor: {nombre_proveedor}'
+    encabezados = ["ID", "Codigo Proveedor", "Materia Prima", "Cantidad", "Precio", "Fecha"]
+    alineaciones = ["left", "left", "left", "center", "right", "center"]
+    filas = []
+
+    for id, transaccion in transacciones_proveedor.items():
+        materia = leer_por_id(ARCHIVOS["materia_prima"], transaccion["codigo_materia"])
+        nombre_materia = materia["nombre"] if materia else "Desconocido"
+        filas.append([id, transaccion["codigo_proveedor"], nombre_materia, transaccion["cantidad"], f'Q {transaccion["precio"]:,}', transaccion["fecha"]])
+
+    generar_tabla(titulo, encabezados, filas, alineaciones)
+
+    input("\nPresiona Enter para regresar a la lista de proveedores...\n")
+
+listar_proveedores()
