@@ -360,3 +360,73 @@ def historial_transacciones(proveedor_id, nombre_proveedor):
     generar_tabla(titulo, encabezados, filas, alineaciones)
 
     input("\nPresiona Enter para regresar a la lista de proveedores...\n")
+
+
+def listar_ordenes_produccion():
+    """Genera un reporte de las órdenes de producción y permite búsqueda."""
+    ordenes = {}
+    while True:
+        limpiar_pantalla()
+        if not ordenes:
+            ordenes = buscar(ARCHIVOS["orden_produccion"], parcial=True, estado="", fecha_inicio="", fecha_finalizacion="")
+            if not ordenes:
+                limpiar_pantalla()
+                print("\nNo hay órdenes de producción registradas.")
+                input("Presiona Enter para continuar...\n")
+                return
+
+        titulo = "Reporte de Órdenes de Producción"
+        encabezados = ["ID", "Producto", "Materias Primas", "Fecha Inicio", "Fecha Fin", "Estado"]
+        alineaciones = ["left", "left", "left", "center", "center", "center"]
+        filas = []
+
+        for id_orden, orden in ordenes.items():
+            prod_info = leer_por_id(ARCHIVOS["productos_finales"], orden["producto"])
+            nombre_producto = prod_info["nombre"] if prod_info else orden["producto"]
+
+            detalles_materia = []
+            for m_id, cant in zip(orden["codigos_materias_primas"], orden["cantidad"]):
+                m_info = leer_por_id(ARCHIVOS["materia_prima"], m_id)
+                m_nombre = m_info["nombre"] if m_info else "Desconocido"
+                detalles_materia.append(f"{m_nombre} (x{cant})")
+            
+            materias_str = "\n".join(detalles_materia)
+
+            filas.append([
+                id_orden, 
+                nombre_producto, 
+                materias_str, 
+                orden["fecha_inicio"], 
+                orden["fecha_finalizacion"], 
+                orden["estado"]
+            ])
+
+        generar_tabla(titulo, encabezados, filas, alineaciones)
+
+        print("\nPuedes buscar por Estado, Fecha de Inicio o Nombre del Producto.")
+        buscar_input = input("Ingresa el término de búsqueda (o '-Volver' para regresar): ").strip().lower()
+
+        if buscar_input == "":
+            limpiar_pantalla()
+            print("\nLa búsqueda no puede estar vacía.")
+            input("Presiona Enter para continuar...\n")
+            ordenes = {}
+            continue
+        
+        if buscar_input == "-volver":
+            return
+
+        resultados = buscar(ARCHIVOS["orden_produccion"], parcial=True, estado=buscar_input, fecha_inicio=buscar_input, fecha_finalizacion=buscar_input)
+        
+        productos_encontrados = buscar(ARCHIVOS["productos_finales"], parcial=True, nombre=buscar_input)
+        for p_id in productos_encontrados.keys():
+            ordenes_por_prod = buscar(ARCHIVOS["orden_produccion"], parcial=False, producto=p_id)
+            resultados.update(ordenes_por_prod)
+
+        ordenes = resultados
+
+        if not ordenes:
+            limpiar_pantalla()
+            print(f"\nNo se encontraron órdenes que coincidan con: '{buscar_input}'")
+            input("Presiona Enter para continuar...\n")
+            ordenes = {}
