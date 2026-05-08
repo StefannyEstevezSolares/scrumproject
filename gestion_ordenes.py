@@ -1,4 +1,4 @@
-from db import ARCHIVOS, crear, leer_todos
+from db import ARCHIVOS, crear, leer_todos, actualizar, leer_por_id
 from validaciones_utils import validar_fecha
 from generar_reportes import limpiar_pantalla
 
@@ -24,7 +24,7 @@ def crear_orden_produccion():
         "producto_codigo" : "",
         "codigos_materias_primas": [],
         "codigos_excluidos_materias_primas": [],
-        "materias_primas": {}, # {"codigo": [nombre, cantidad]. "codigo2": [nombre, cantidad]}
+        "materias_primas": {},
         "cantidad": [],
         "cantidad_producir": 0,
         "fecha_inicio": "",
@@ -35,6 +35,7 @@ def crear_orden_produccion():
     ingresat_materia_prima = True
 
     materias_primas = leer_todos(ARCHIVOS["materia_prima"])
+    materias_primas = {id: values for id, values in materias_primas.items() if values["stock"] > 0}
     if not materias_primas:
         print("No hay materias primas disponibles.\nPor favor, agregue materias primas antes de crear una orden de producción.")
         input("Presione Enter para continuar...")
@@ -166,5 +167,15 @@ def crear_orden_produccion():
         }
     
     crear(ARCHIVOS["orden_produccion"], datos_guardar)
+
+    for i in range(len(datos_guardar["codigos_materias_primas"])):
+        id_m = datos_guardar["codigos_materias_primas"][i]
+
+        info_m = leer_por_id(ARCHIVOS["materia_prima"], id_m)
+
+        nuevo_stock = info_m["stock"] - datos_guardar["cantidad"][i]
+        actualizar(ARCHIVOS["materia_prima"], id_m, {"stock": nuevo_stock})
+
+
     print("\nOrden de producción creada exitosamente.")
     input("Presione Enter para continuar...")
