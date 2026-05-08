@@ -1,26 +1,26 @@
 {
-    "prod-001": {
-        "nombre": "Camisa Azul Clásica",
-        "descripcion": "Camisa de botones manga larga 100% algodón",
-        "precio_venta": 185.0,
-        "stock": 150,
-        "fecha_fabricacion": "02-05-2026",
-        "fecha_vencimiento (si aplica)": null
+    "88888888-4444-4444-4444-121212121212": {
+        "nombre": "Pantalón Denim Clásico",
+        "descripcion": "Jean corte recto para caballero, color azul índigo",
+        "precio_venta": 350.0,
+        "stock": 45,
+        "fecha_fabricacion": "07-05-2026",
+        "fecha_vencimiento (si aplica)": "No aplica"
     },
-    "prod-002": {
-        "nombre": "Blusa Azul de Verano",
-        "descripcion": "Blusa sin mangas de algodón con detalles de botones",
-        "precio_venta": 140.0,
-        "stock": 80,
-        "fecha_fabricacion": "04-05-2026",
-        "fecha_vencimiento (si aplica)": null
+    "77777777-1111-1111-1111-222222222222": {
+        "nombre": "Vestido de Gala Carmesí",
+        "descripcion": "Vestido largo de seda natural con detalles en encaje",
+        "precio_venta": 1200.0,
+        "stock": 15,
+        "fecha_fabricacion": "08-05-2026",
+        "fecha_vencimiento (si aplica)": "No aplica"
     },
-    "3bd42291-8aee-4d76-aefd-8b9970d5f21c": {
-        "nombre": "zapatos deportivos",
-        "descripcion": "Zapatos para correr",
-        "precio_venta": 45.0,
-        "stock": 100,
-        "fecha_fabricacion": "14-06-2026",
-        "fecha_vencimiento (si aplica)": null
+    "66666666-2222-2222-2222-333333333333": {
+        "nombre": "Camisa Oxford Formal",
+        "descripcion": "Camisa de vestir blanca, manga larga, algodón 100%",
+        "precio_venta": 425.0,
+        "stock": 60,
+        "fecha_fabricacion": "08-05-2026",
+        "fecha_vencimiento (si aplica)": "No aplica"
     }
 }

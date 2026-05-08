@@ -1,29 +1,38 @@
 {
-    "mat-001": {
-        "nombre": "Rollo de Tela Algodón Azul",
-        "descripcion": "Tela 100% algodón premium, 50 metros",
-        "codigo_proveedor": "prov-001",
-        "stock": 145,
-        "precio_unidad": 350.5,
-        "fecha_adquisicion": "15-04-2026",
-        "fecha_vencimiento (si aplica)": null
+    "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6": {
+        "nombre": "Tela Denim Premium 14oz",
+        "descripcion": "Tela de mezclilla gruesa para pantalones, rollo de 50m",
+        "codigo_proveedor": "7d3c8e1a-4b92-4f3e-8d2a-1c5b9a8f7e6d",
+        "stock": 200,
+        "precio_unidad": 1250.0,
+        "fecha_adquisicion": "01-05-2026",
+        "fecha_vencimiento (si aplica)": "No aplica"
     },
-    "mat-002": {
-        "nombre": "Caja de Botones Blancos",
-        "descripcion": "Caja con 1000 botones plásticos de 4 agujeros",
-        "codigo_proveedor": "prov-002",
-        "stock": 12,
-        "precio_unidad": 45.0,
-        "fecha_adquisicion": "20-04-2026",
-        "fecha_vencimiento (si aplica)": null
+    "f6e5d4c3-b2a1-4f5e-9d8c-7b6a5a4b3c2d": {
+        "nombre": "Piel de Vacuno Café",
+        "descripcion": "Cuero tratado color café para calzado, m2",
+        "codigo_proveedor": "2a1b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        "stock": 150,
+        "precio_unidad": 450.0,
+        "fecha_adquisicion": "05-05-2026",
+        "fecha_vencimiento (si aplica)": "No aplica"
     },
-    "a06fd9bb-499d-4a28-af9f-546112e4da1c": {
-        "nombre": "lazo",
-        "descripcion": "de cuero",
-        "codigo_proveedor": "prov-001",
-        "stock": 45,
-        "precio_unidad": 100.0,
-        "fecha_adquisicion": "15-04-2026",
-        "fecha_vencimiento (si aplica)": null
+    "b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e": {
+        "nombre": "Seda Natural Italiana",
+        "descripcion": "Tela de seda lisa para alta costura, rollo de 20m",
+        "codigo_proveedor": "3e4d5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a",
+        "stock": 80,
+        "precio_unidad": 2100.0,
+        "fecha_adquisicion": "06-05-2026",
+        "fecha_vencimiento (si aplica)": "No aplica"
+    },
+    "c1d2e3f4-a5b6-7c8d-9e0f-1a2b3c4d5e6f": {
+        "nombre": "Algodón Oxford Blanco",
+        "descripcion": "Tejido de algodón transpirable para camisería, rollo de 100m",
+        "codigo_proveedor": "7d3c8e1a-4b92-4f3e-8d2a-1c5b9a8f7e6d",
+        "stock": 300,
+        "precio_unidad": 850.0,
+        "fecha_adquisicion": "07-05-2026",
+        "fecha_vencimiento (si aplica)": "No aplica"
     }
 }

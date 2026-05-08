@@ -1,26 +1,26 @@
 {
-    "prov-001": {
-        "nombre_empresa": "Textiles Nacionales S.A.",
-        "direccion": "Zona Industrial 4, Ciudad de Guatemala",
-        "telefono": "2233-4455",
-        "contacto_principal": "Carlos Mendoza",
-        "celular": "5544-3322",
-        "email": "ventas@textilesnacionales.com"
+    "7d3c8e1a-4b92-4f3e-8d2a-1c5b9a8f7e6d": {
+        "nombre_empresa": "Textiles del Norte S.A.",
+        "direccion": "Avenida de las Industrias 45-12, Zona 12",
+        "telefono": "2445-9900",
+        "contacto_principal": "Roberto Gómez",
+        "celular": "5500-1122",
+        "email": "ventas@textilesnorte.com"
     },
-    "prov-002": {
-        "nombre_empresa": "Botones y Cierres El Centro",
-        "direccion": "Avenida Central 12-34, Zona 1",
-        "telefono": "2444-1122",
-        "contacto_principal": "Lucía Pineda",
-        "celular": "4455-6677",
-        "email": "contacto@botoneselcentro.com"
+    "2a1b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d": {
+        "nombre_empresa": "Curtiembre La Excelencia",
+        "direccion": "Km 15 Carretera al Atlántico",
+        "telefono": "2233-4411",
+        "contacto_principal": "Elena de León",
+        "celular": "4411-2233",
+        "email": "info@curtiembreexcelencia.gt"
     },
-    "c365bc4a-504c-4131-852f-ee834655694d": {
-        "nombre_empresa": "Algodones",
-        "direccion": "avenida17",
-        "telefono": "87654321",
-        "contacto_principal": "76789876",
-        "celular": "87656787",
-        "email": "stef@gmail.com"
+    "3e4d5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a": {
+        "nombre_empresa": "Sedería Fina de Oriente",
+        "direccion": "10ma Calle 5-44, Zona 14",
+        "telefono": "2331-5544",
+        "contacto_principal": "Lin Chang",
+        "celular": "4112-9988",
+        "email": "importaciones@sederiafina.com"
     }
 }
