@@ -1,0 +1,30 @@
+{
+    "trans-001": {
+        "codigo_proveedor": "prov-001",
+        "codigo_materia": "mat-001",
+        "cantidad": 10,
+        "precio": 3505.0,
+        "fecha": "15-04-2026"
+    },
+    "trans-002": {
+        "codigo_proveedor": "prov-002",
+        "codigo_materia": "mat-002",
+        "cantidad": 5,
+        "precio": 225.0,
+        "fecha": "20-04-2026"
+    },
+    "f0f5fafa-0b72-43c2-8d3d-bde04e5bda5c": {
+        "codigo_proveedor": "prov-001",
+        "codigo_materia": "mat-001",
+        "cantidad": 100,
+        "precio": 400.0,
+        "fecha": "15-04-2026"
+    },
+    "6a1fd117-977d-4489-a7eb-af39a5b099b2": {
+        "codigo_proveedor": "prov-001",
+        "codigo_materia": "mat-001",
+        "cantidad": 100,
+        "precio": 400.0,
+        "fecha": "15-04-2026"
+    }
+}

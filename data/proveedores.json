@@ -1,0 +1,26 @@
+{
+    "prov-001": {
+        "nombre_empresa": "Textiles Nacionales S.A.",
+        "direccion": "Zona Industrial 4, Ciudad de Guatemala",
+        "telefono": "2233-4455",
+        "contacto_principal": "Carlos Mendoza",
+        "celular": "5544-3322",
+        "email": "ventas@textilesnacionales.com"
+    },
+    "prov-002": {
+        "nombre_empresa": "Botones y Cierres El Centro",
+        "direccion": "Avenida Central 12-34, Zona 1",
+        "telefono": "2444-1122",
+        "contacto_principal": "Lucía Pineda",
+        "celular": "4455-6677",
+        "email": "contacto@botoneselcentro.com"
+    },
+    "c365bc4a-504c-4131-852f-ee834655694d": {
+        "nombre_empresa": "Algodones",
+        "direccion": "avenida17",
+        "telefono": "87654321",
+        "contacto_principal": "76789876",
+        "celular": "87656787",
+        "email": "stef@gmail.com"
+    }
+}

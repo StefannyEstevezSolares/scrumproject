@@ -1,0 +1,23 @@
+{
+  "ov-001": {
+    "codigo_cliente": "cli-001",
+    "codigos_productos": {
+      "prod-001": 30,
+      "prod-002": 15
+    },
+    "total": 7650.00,
+    "fecha_inicio": "2026-05-05",
+    "fecha_entrega": "2026-05-08",
+    "estado": "Enviado"
+  },
+  "ov-002": {
+    "codigo_cliente": "cli-002",
+    "codigos_productos": {
+      "prod-001": 100
+    },
+    "total": 18500.00,
+    "fecha_inicio": "2026-05-06",
+    "fecha_entrega": "2026-05-12",
+    "estado": "Pendiente"
+  }
+}
