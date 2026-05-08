@@ -147,6 +147,37 @@ scrumproject/
 
 ## 📷 Capturas de Pantalla 
 
+<table>
+  <tr>
+    <td align="center">
+      <img src="./images/Menu_Principal.png" width="450"><br>
+      Menu principal
+    </td>
+    <td align="center">
+      <img src="./images/Menu_clientes.png" width="450"><br>
+      Menu de Clientes
+    </td>
+    <td align="center">
+      <img src="./images/Menu_Proveedores.png" width="450"><br>
+      Menu de Proveedores
+    </td>
+  </tr>
+  <tr>
+  <td align="center">
+      <img src="./images/Menu_productos_finales.png" width="450"><br>
+      Menu de Productos Finales
+    </td>
+    <td align="center">
+      <img src="./images/Menu_ventas.png" width="450"><br>
+      Menu de Ventas
+    </td>
+    <td align="center">
+      <img src="./images/Menu_Reportes.png" width="450"><br>
+      Menu de Reportes
+    </td>
+  </tr>
+</table>
+
 ## 📌 Roadmap
 
 - Implementar interfaz gráfica (GUI) con Tkinter o similar.
