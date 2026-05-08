@@ -1,6 +1,13 @@
 from db import ARCHIVOS, crear, leer_todos, actualizar, leer_por_id
 from validaciones_utils import validar_fecha
-from generar_reportes import limpiar_pantalla
+import os
+
+def limpiar_pantalla():
+    """Limpia la pantalla de la consola."""
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 def mostrar_datos(datos):
@@ -179,3 +186,55 @@ def crear_orden_produccion():
 
     print("\nOrden de producción creada exitosamente.")
     input("Presione Enter para continuar...")
+
+
+def actualizar_estado_orden(id_orden):
+    """
+    Cambia el estado de una orden y gestiona inventario.
+    """
+    limpiar_pantalla()
+    orden = leer_por_id(ARCHIVOS["orden_produccion"], id_orden)
+    if not orden:
+        print("\nError: Orden no encontrada.")
+        return
+
+    if orden["estado"] in ["Completada", "Cancelada"]:
+        print(f"\nLa orden ya está en estado {orden['estado']} y no puede modificarse.")
+        input("Presiona Enter para continuar...")
+        return
+
+    print(f"\n--- Cambiar Estado de la Orden ({id_orden}) ---")
+    print(f"Estado actual: {orden['estado']}")
+    print("1. Pendiente")
+    print("2. En Proceso")
+    print("3. Completada (Suma al stock de Producto Final)")
+    print("4. Cancelada (Devuelve stock a Materia Prima)")
+    print("5. Regresar")
+    
+    opcion = input("\nSeleccione el nuevo estado (1-5): ").strip()
+
+    nuevo_estado = ""
+    if opcion == "1": nuevo_estado = "Pendiente"
+    elif opcion == "2": nuevo_estado = "En Proceso"
+    elif opcion == "3": nuevo_estado = "Completada"
+    elif opcion == "4": nuevo_estado = "Cancelada"
+    else: return
+
+    if nuevo_estado == "Completada":
+        producto = leer_por_id(ARCHIVOS["productos_finales"], orden["producto"])
+        if producto:
+            cantidad_nueva = producto.get("stock", 0) + orden.get("cantidad_producir", 0)
+            actualizar(ARCHIVOS["productos_finales"], orden["producto"], {"stock": cantidad_nueva})
+            print(f"\n\nStock de '{producto['nombre']}' actualizado (+{orden.get('cantidad_producir', 0)}).")
+
+    elif nuevo_estado == "Cancelada":
+        for m_id, cant in zip(orden["codigos_materias_primas"], orden["cantidad"]):
+            materia = leer_por_id(ARCHIVOS["materia_prima"], m_id)
+            if materia:
+                stock_restaurado = materia.get("stock", 0) + cant
+                actualizar(ARCHIVOS["materia_prima"], m_id, {"stock": stock_restaurado})
+                print(f"\n\nStock de '{materia['nombre']}' restaurado (+{cant}).")
+
+    actualizar(ARCHIVOS["orden_produccion"], id_orden, {"estado": nuevo_estado})
+    print(f"\nOrden actualizada a estado: {nuevo_estado}")
+    input("Presiona Enter para continuar...")

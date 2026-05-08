@@ -4,6 +4,7 @@ from rich import box
 from rich.text import Text
 import os
 from db import ARCHIVOS, buscar, leer_por_id
+from gestion_ordenes import actualizar_estado_orden
 
 
 def limpiar_pantalla():
@@ -376,11 +377,13 @@ def listar_ordenes_produccion():
                 return
 
         titulo = "Reporte de Órdenes de Producción"
-        encabezados = ["ID", "Producto", "Materias Primas", "Producción", "Fecha Inicio", "Fecha Fin", "Estado"]
-        alineaciones = ["left", "left", "left", "center", "center", "center", "center"]
+        encabezados = ["#", "ID", "Producto", "Producción", "Fecha Inicio", "Fecha Fin", "Estado"]
+        alineaciones = ["left", "left", "center", "center", "center", "center"]
         filas = []
 
-        for id_orden, orden in ordenes.items():
+        mapeo_ids = []
+
+        for i, (id_orden, orden) in enumerate(ordenes.items(), start=1):
             prod_info = leer_por_id(ARCHIVOS["productos_finales"], orden["producto"])
             nombre_producto = prod_info["nombre"] if prod_info else orden["producto"]
 
@@ -393,30 +396,36 @@ def listar_ordenes_produccion():
             materias_str = "\n".join(detalles_materia)
 
             filas.append([
+                i,
                 id_orden, 
-                nombre_producto, 
-                materias_str, 
+                nombre_producto,
                 orden["cantidad_producir"], 
                 orden["fecha_inicio"], 
                 orden["fecha_finalizacion"], 
                 orden["estado"]
             ])
 
+            mapeo_ids.append(id_orden)
+
         generar_tabla(titulo, encabezados, filas, alineaciones)
 
-        print("\nPuedes buscar por Estado, Fecha de Inicio o Nombre del Producto.")
-        buscar_input = input("Ingresa el término de búsqueda (o '-Volver' para regresar): ").strip().lower()
+        print("\nOpciones:")
+        print("- Ingresa un término para buscar (Estado, Fecha o Producto).")
+        print("- Ingresa el número de fila para cambiar estado (ej: #1).")
+        buscar_input = input("Selección (o '-Volver'): ").strip().lower()
 
-        if buscar_input == "":
-            limpiar_pantalla()
-            print("\nLa búsqueda no puede estar vacía.")
-            input("Presiona Enter para continuar...\n")
-            ordenes = {}
-            continue
+        if buscar_input == "-volver": return
         
-        if buscar_input == "-volver":
-            return
-
+        if buscar_input.startswith("#"):
+            try:
+                idx = int(buscar_input[1:]) - 1
+                if 0 <= idx < len(mapeo_ids):
+                    actualizar_estado_orden(mapeo_ids[idx])
+                    ordenes = {} # Refrescar datos
+                    continue
+            except ValueError:
+                print("Número inválido.")
+                continue
         resultados = buscar(ARCHIVOS["orden_produccion"], parcial=True, estado=buscar_input, fecha_inicio=buscar_input, fecha_finalizacion=buscar_input)
         
         productos_encontrados = buscar(ARCHIVOS["productos_finales"], parcial=True, nombre=buscar_input)
@@ -431,3 +440,6 @@ def listar_ordenes_produccion():
             print(f"\nNo se encontraron órdenes que coincidan con: '{buscar_input}'")
             input("Presiona Enter para continuar...\n")
             ordenes = {}
+
+
+listar_ordenes_produccion()
