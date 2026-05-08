@@ -5,7 +5,7 @@
         "codigo_proveedor": "prov-001",
         "stock": 145,
         "precio_unidad": 350.5,
-        "fecha_adquisicion": "2026-04-15",
+        "fecha_adquisicion": "15-04-2026",
         "fecha_vencimiento (si aplica)": null
     },
     "mat-002": {
@@ -14,7 +14,7 @@
         "codigo_proveedor": "prov-002",
         "stock": 12,
         "precio_unidad": 45.0,
-        "fecha_adquisicion": "2026-04-20",
+        "fecha_adquisicion": "20-04-2026",
         "fecha_vencimiento (si aplica)": null
     },
     "a06fd9bb-499d-4a28-af9f-546112e4da1c": {
