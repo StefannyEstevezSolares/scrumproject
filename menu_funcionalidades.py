@@ -4,6 +4,9 @@ from gestion_materiaprima import input_materia_prima
 from gestion_proveedores import input_proveedor, input_transaccion_proveedores
 from gestion_productosfinales import input_producto_final
 from agregar_venta import agregar_venta
+from gestion_ordenes import crear_orden_produccion
+from generar_reportes import productos_finales, listar_clientes, ventas, materia_prima, listar_proveedores, listar_ordenes_produccion
+
 
 def menu_principal():
 
@@ -115,7 +118,7 @@ def menu_materiaprima_funcional():
                 input_materia_prima()
 
             elif opc == 2:
-                print("Enlistar ordenes")
+                crear_orden_produccion()
 
             elif opc == 3:
                 materia_prima()
@@ -184,8 +187,6 @@ def menu_ventas_funcional():
 
 
 # ==================== REPORTES ====================
-from generar_reportes import productos_finales, listar_clientes, ventas, materia_prima, listar_proveedores
-
 
 def menu_reportes_funcional():
 
@@ -212,7 +213,7 @@ def menu_reportes_funcional():
                 ventas()
 
             elif opc == 6:
-                print("Reporte de órdenes de producción...")
+                listar_ordenes_produccion()
 
             elif opc == 7:
                 break
