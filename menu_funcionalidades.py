@@ -3,7 +3,7 @@ from gestion_clientes import input_clientes
 from gestion_materiaprima import input_materia_prima
 from gestion_proveedores import input_proveedor, input_transaccion_proveedores
 from gestion_productosfinales import input_producto_final
-from agregar_venta import agregar_venta
+from agregar_venta import agregar_venta, cambiar_estado
 from gestion_ordenes import crear_orden_produccion, limpiar_pantalla
 from generar_reportes import productos_finales, listar_clientes, ventas, materia_prima, listar_proveedores, listar_ordenes_produccion
 
@@ -18,28 +18,28 @@ def menu_principal():
             opc = opcion()
 
             if opc == 1:
-                menu_clientes_funcional()
                 limpiar_pantalla()
+                menu_clientes_funcional()
 
             elif opc == 2:
-                menu_proveedores_funcional()
                 limpiar_pantalla()
+                menu_proveedores_funcional()
 
             elif opc == 3:
-                menu_materiaprima_funcional()
                 limpiar_pantalla()
+                menu_materiaprima_funcional()
 
             elif opc == 4:
-                menu_productosfinales_funcional()
                 limpiar_pantalla()
+                menu_productosfinales_funcional()
 
             elif opc == 5:
-                menu_ventas_funcional()
                 limpiar_pantalla()
+                menu_ventas_funcional()
 
             elif opc == 6:
-                menu_reportes_funcional()
                 limpiar_pantalla()
+                menu_reportes_funcional()
 
             elif opc == 7:
                 print("Saliendo del programa...")
@@ -64,12 +64,12 @@ def menu_clientes_funcional():
             opc = opcion()
 
             if opc == 1:
-                input_clientes()
                 limpiar_pantalla()
+                input_clientes()
 
             elif opc == 2:
-                listar_clientes()
                 limpiar_pantalla()
+                listar_clientes()
 
             elif opc == 3:
                 break
@@ -84,7 +84,7 @@ def menu_clientes_funcional():
 # ==================== PROVEEDORES ====================
 
 def menu_proveedores_funcional():
-    
+
     while True:
         limpiar_pantalla()
         try:
@@ -93,16 +93,16 @@ def menu_proveedores_funcional():
             opc = opcion()
 
             if opc == 1:
-                input_proveedor()
                 limpiar_pantalla()
+                input_proveedor()
 
             elif opc == 2:
-                input_transaccion_proveedores()
                 limpiar_pantalla()
+                input_transaccion_proveedores()
 
             elif opc == 3:
-                listar_proveedores()
                 limpiar_pantalla()
+                listar_proveedores()
 
             elif opc == 4:
                 break
@@ -126,18 +126,22 @@ def menu_materiaprima_funcional():
             opc = opcion()
 
             if opc == 1:
-                input_materia_prima()
                 limpiar_pantalla()
+                input_materia_prima()
 
             elif opc == 2:
-                crear_orden_produccion()
                 limpiar_pantalla()
+                crear_orden_produccion()
 
             elif opc == 3:
-                materia_prima()
                 limpiar_pantalla()
+                materia_prima()
 
             elif opc == 4:
+                limpiar_pantalla()
+                listar_ordenes_produccion()
+
+            elif opc == 5:
                 break
 
             else:
@@ -159,12 +163,12 @@ def menu_productosfinales_funcional():
             opc = opcion()
 
             if opc == 1:
-                input_producto_final()
                 limpiar_pantalla()
+                input_producto_final()
 
             elif opc == 2:
-                productos_finales()
                 limpiar_pantalla()
+                productos_finales()
 
             elif opc == 3:
                 break
@@ -188,13 +192,18 @@ def menu_ventas_funcional():
             opc = opcion()
 
             if opc == 1:
+                limpiar_pantalla()
                 agregar_venta()
-                limpiar_pantalla()
+
             elif opc == 2:
-                ventas()
                 limpiar_pantalla()
+                ventas()
 
             elif opc == 3:
+                limpiar_pantalla()
+                cambiar_estado()
+
+            elif opc == 4:
                 break
 
             else:
@@ -216,28 +225,28 @@ def menu_reportes_funcional():
             opc = opcion()
 
             if opc == 1:
-                listar_clientes()
                 limpiar_pantalla()
+                listar_clientes()
 
             elif opc == 2:
-                listar_proveedores()
                 limpiar_pantalla()
+                listar_proveedores()
 
             elif opc == 3:
-                materia_prima()
                 limpiar_pantalla()
+                materia_prima()
 
             elif opc == 4:
-                productos_finales()
                 limpiar_pantalla()
+                productos_finales()
 
             elif opc == 5:
-                ventas()
                 limpiar_pantalla()
+                ventas()
 
             elif opc == 6:
-                listar_ordenes_produccion()
                 limpiar_pantalla()
+                listar_ordenes_produccion()
 
             elif opc == 7:
                 break

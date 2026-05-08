@@ -60,9 +60,10 @@ def menu_materiaprima():
             INGRESE UN NÚMERO DEL MENÚ PARA CONTINUAR:
           
           1. Registrar materia prima
-          2. Registrar orden de produción
+          2. Registrar orden de producción
           3. Enlistar materia prima existente
-          4. Volver
+          4. Cambiar estado de orden de producción
+          5. Volver
 
           
 =================================================================
@@ -92,7 +93,8 @@ def menu_ventas():
           
           1. Registrar venta
           2. Enlistar ventas
-          3. Volver
+          3. Cambiar estado de venta
+          4. Volver
 
           
 =================================================================
@@ -101,7 +103,7 @@ def menu_ventas():
 def menu_reportes():
     print("""
 
-==================BIENVENIDO AL MENU DE VENTAS===================
+==================BIENVENIDO AL MENU DE REPORTES===================
           
             INGRESE UN NÚMERO DEL MENÚ PARA CONTINUAR:
           

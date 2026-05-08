@@ -1,6 +1,7 @@
 import db
 import validaciones_utils
 import os
+from generar_reportes import generar_tabla
 
 def limpiar_pantalla():
     """Limpia la pantalla de la consola."""
@@ -210,16 +211,95 @@ def agregar_venta():
     print(f"Estado de la venta: {estado}")
     input("\nPresione enter para continuar")
 
+
+from generar_reportes import generar_tabla
+import db
+
 def cambiar_estado():
-    ventas = db.leer_todos(db.ARCHIVOS["ventas"])
+    termino_busqueda = ""  # Almacena el filtro actual
+    while True:
+        limpiar_pantalla()
+        
+        # Carga de datos: Filtrados por búsqueda parcial o todos
+        if termino_busqueda == "":
+            ventas_dict = db.leer_todos(db.ARCHIVOS["ventas"])
+        else:
+            ventas_dict = db.buscar(db.ARCHIVOS["ventas"], parcial=True, estado=termino_busqueda)
 
-    id_venta = input("Ingrese el id de la venta: ").strip()
+        # Manejo de casos sin resultados
+        if not ventas_dict:
+            if termino_busqueda != "":
+                print(f"\nNo se encontraron ventas con el estado: '{termino_busqueda}'")
+                input("Presione Enter para limpiar la búsqueda...")
+                termino_busqueda = ""
+                continue
+            else:
+                print("\nNo hay ventas registradas en el sistema.")
+                input("Presione Enter para volver...")
+                return
 
-    if id_venta in ventas:
-        estado = estado_venta()
+        # Preparación de la tabla
+        titulo = f"GESTIÓN DE VENTAS" + (f" (Filtrado por: {termino_busqueda})" if termino_busqueda else "")
+        encabezados = ["#", "ID Venta", "Estado", "Total (Q)"]
+        alineaciones = ["center", "left", "center", "right"]
+        
+        filas = []
+        mapeo_ids = []
+        for i, (id_venta, datos) in enumerate(ventas_dict.items(), start=1):
+            filas.append([i, id_venta, datos['estado'], f"Q {datos['total']:,.2f}"])
+            mapeo_ids.append(id_venta)
 
-    nuevo_dato = {
-        "estado": estado
-    }
+        generar_tabla(titulo, encabezados, filas, alineaciones)
 
-    db.actualizar(db.ARCHIVOS["ventas"], id_venta, nuevo_dato)
+        print("\nOpciones:")
+        print("- Ingresa un estado (ej: 'pen') para buscar ventas.")
+        print("- Ingresa '#X' (ej: #1) para cambiar el estado de esa fila.")
+        print("- Ingresa '-volver' para regresar al menú principal.")
+        
+        entrada = input("\nSelección / Búsqueda: ").strip().lower()
+
+        if entrada == "-volver":
+            break
+
+        # Selección de fila para cambiar estado
+        if entrada.startswith("#"):
+            try:
+                indice = int(entrada[1:]) - 1
+                if 0 <= indice < len(mapeo_ids):
+                    id_v_seleccionada = mapeo_ids[indice]
+                    venta = ventas_dict[id_v_seleccionada]
+                    
+                    # Restricción: No se permite cambiar si ya está Entregado o Cancelado
+                    if venta["estado"] in ["Entregado", "Cancelado"]:
+                        print(f"\nError: La venta ya está '{venta['estado']}' y no puede modificarse.")
+                        input("Presione Enter para continuar...")
+                        continue
+
+                    # Mini menú para seleccionar nuevo estado
+                    nuevo_estado = estado_venta() 
+
+                    # Lógica de devolución de stock si se cancela
+                    if nuevo_estado == "Cancelado":
+                        # Se usa 'codigos_productos' según estructura de ventas.json
+                        productos_a_devolver = venta.get("codigos_productos", {})
+                        for id_prod, cantidad in productos_a_devolver.items():
+                            info_p = db.leer_por_id(db.ARCHIVOS["productos_finales"], id_prod)
+                            if info_p:
+                                n_stock = info_p["stock"] + cantidad
+                                db.actualizar(db.ARCHIVOS["productos_finales"], id_prod, {"stock": n_stock})
+                        print("\nStock de productos restaurado.")
+
+                    # Actualización del registro
+                    db.actualizar(db.ARCHIVOS["ventas"], id_v_seleccionada, {"estado": nuevo_estado})
+                    print(f"\nVenta {id_v_seleccionada} actualizada con éxito.")
+                    input("Presione Enter para continuar...")
+                else:
+                    print("Número de fila fuera de rango.")
+                    input("Presione Enter para continuar...")
+            except ValueError:
+                print("Formato de selección inválido.")
+                input("Presione Enter para continuar...")
+        
+        else:
+            # Si no es un comando, se toma como término de búsqueda
+            termino_busqueda = entrada
