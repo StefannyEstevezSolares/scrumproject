@@ -440,6 +440,3 @@ def listar_ordenes_produccion():
             print(f"\nNo se encontraron órdenes que coincidan con: '{buscar_input}'")
             input("Presiona Enter para continuar...\n")
             ordenes = {}
-
-
-listar_ordenes_produccion()
