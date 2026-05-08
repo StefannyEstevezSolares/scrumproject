@@ -1,23 +1,20 @@
 {
-  "op-001": {
-    "producto": "Camisa Azul Clásica",
-    "codigos_materias_primas": [
-      "mat-001",
-      "mat-002"
-    ],
-    "cantidad": 200,
-    "fecha_inicio": "2026-04-25",
-    "fecha_finalizacion": "2026-05-02",
-    "estado": "Completado"
-  },
-  "op-002": {
-    "producto": "Blusa Azul de Verano",
-    "codigos_materias_primas": [
-      "mat-001"
-    ],
-    "cantidad": 100,
-    "fecha_inicio": "2026-05-03",
-    "fecha_finalizacion": "2026-05-06",
-    "estado": "En Proceso"
-  }
+    "abcdef12-3456-7890-abcd-ef1234567890": {
+        "producto": "88888888-4444-4444-4444-121212121212",
+        "codigos_materias_primas": ["a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6"],
+        "cantidad": [2],
+        "cantidad_producir": 50,
+        "fecha_inicio": "01-05-2026",
+        "fecha_finalizacion": "07-05-2026",
+        "estado": "Completada"
+    },
+    "dress123-4567-8901-2345-67890abcdef1": {
+        "producto": "77777777-1111-1111-1111-222222222222",
+        "codigos_materias_primas": ["b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e"],
+        "cantidad": [3],
+        "cantidad_producir": 15,
+        "fecha_inicio": "04-05-2026",
+        "fecha_finalizacion": "08-05-2026",
+        "estado": "Completada"
+    }
 }

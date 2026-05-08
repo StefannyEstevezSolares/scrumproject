@@ -4,11 +4,14 @@ from gestion_materiaprima import input_materia_prima
 from gestion_proveedores import input_proveedor, input_transaccion_proveedores
 from gestion_productosfinales import input_producto_final
 from agregar_venta import agregar_venta
+from gestion_ordenes import crear_orden_produccion, limpiar_pantalla
+from generar_reportes import productos_finales, listar_clientes, ventas, materia_prima, listar_proveedores, listar_ordenes_produccion
+
 
 def menu_principal():
 
     while True:
-
+        limpiar_pantalla()
         try:
 
             menu_princial()
@@ -16,31 +19,37 @@ def menu_principal():
 
             if opc == 1:
                 menu_clientes_funcional()
+                limpiar_pantalla()
 
             elif opc == 2:
                 menu_proveedores_funcional()
+                limpiar_pantalla()
 
             elif opc == 3:
                 menu_materiaprima_funcional()
+                limpiar_pantalla()
 
             elif opc == 4:
                 menu_productosfinales_funcional()
+                limpiar_pantalla()
 
             elif opc == 5:
                 menu_ventas_funcional()
+                limpiar_pantalla()
 
             elif opc == 6:
                 menu_reportes_funcional()
+                limpiar_pantalla()
 
             elif opc == 7:
                 print("Saliendo del programa...")
                 break
 
             else:
-                print("Opción inválida")
+                input("\nOpción inválida.\nPresina Enter para continuar...")
 
         except:
-            print("Ingrese un valor válido")
+            input("\nIngrese un valor válido.\nPresiona Enter para continuar...")
 
 
 # ==================== CLIENTES ====================
@@ -48,7 +57,7 @@ def menu_principal():
 def menu_clientes_funcional():
 
     while True:
-
+        limpiar_pantalla()
         try:
 
             menu_clientes()
@@ -56,26 +65,28 @@ def menu_clientes_funcional():
 
             if opc == 1:
                 input_clientes()
+                limpiar_pantalla()
 
             elif opc == 2:
                 listar_clientes()
+                limpiar_pantalla()
 
             elif opc == 3:
                 break
 
             else:
-                print("Opción inválida")
+                input("\nOpción inválida.\nPresina Enter para continuar...")
 
         except:
-            print("Ingrese un valor válido")
+            input("\nIngrese un valor válido.\nPresiona Enter para continuar...")
 
 
 # ==================== PROVEEDORES ====================
 
 def menu_proveedores_funcional():
-
+    
     while True:
-
+        limpiar_pantalla()
         try:
 
             menu_proveedores()
@@ -83,21 +94,24 @@ def menu_proveedores_funcional():
 
             if opc == 1:
                 input_proveedor()
+                limpiar_pantalla()
 
             elif opc == 2:
-                input_transaccion_proveedores
+                input_transaccion_proveedores()
+                limpiar_pantalla()
 
             elif opc == 3:
                 listar_proveedores()
+                limpiar_pantalla()
 
             elif opc == 4:
                 break
 
             else:
-                print("Opción inválida")
+                input("\nOpción inválida.\nPresina Enter para continuar...")
 
         except:
-            print("Ingrese un valor válido")
+            input("\nIngrese un valor válido.\nPresiona Enter para continuar...")
 
 
 # ==================== MATERIA PRIMA ====================
@@ -105,7 +119,7 @@ def menu_proveedores_funcional():
 def menu_materiaprima_funcional():
 
     while True:
-
+        limpiar_pantalla()
         try:
 
             menu_materiaprima()
@@ -113,21 +127,24 @@ def menu_materiaprima_funcional():
 
             if opc == 1:
                 input_materia_prima()
+                limpiar_pantalla()
 
             elif opc == 2:
-                print("Enlistar ordenes")
+                crear_orden_produccion()
+                limpiar_pantalla()
 
             elif opc == 3:
                 materia_prima()
+                limpiar_pantalla()
 
             elif opc == 4:
                 break
 
             else:
-                print("Opción inválida")
+                input("\nOpción inválida.\nPresina Enter para continuar...")
 
         except:
-            print("Ingrese un valor válido")
+            input("\nIngrese un valor válido.\nPresiona Enter para continuar...")
 
 
 # ==================== PRODUCTOS FINALES ====================
@@ -135,7 +152,7 @@ def menu_materiaprima_funcional():
 def menu_productosfinales_funcional():
 
     while True:
-
+        limpiar_pantalla()
         try:
 
             menu_productosfinales()
@@ -143,18 +160,20 @@ def menu_productosfinales_funcional():
 
             if opc == 1:
                 input_producto_final()
+                limpiar_pantalla()
 
             elif opc == 2:
                 productos_finales()
+                limpiar_pantalla()
 
             elif opc == 3:
                 break
 
             else:
-                print("Opción inválida")
+                input("\nOpción inválida.\nPresina Enter para continuar...")
 
         except:
-            print("Ingrese un valor válido")
+            input("\nIngrese un valor válido.\nPresiona Enter para continuar...")
 
 
 # ==================== VENTAS ====================
@@ -162,7 +181,7 @@ def menu_productosfinales_funcional():
 def menu_ventas_funcional():
 
     while True:
-
+        limpiar_pantalla()
         try:
 
             menu_ventas()
@@ -170,27 +189,27 @@ def menu_ventas_funcional():
 
             if opc == 1:
                 agregar_venta()
+                limpiar_pantalla()
             elif opc == 2:
                 ventas()
+                limpiar_pantalla()
 
             elif opc == 3:
                 break
 
             else:
-                print("Opción inválida")
+                input("\nOpción inválida.\nPresina Enter para continuar...")
 
         except:
-            print("Ingrese un valor válido")
+            input("\nIngrese un valor válido.\nPresiona Enter para continuar...")
 
 
 # ==================== REPORTES ====================
-from generar_reportes import productos_finales, listar_clientes, ventas, materia_prima, listar_proveedores
-
 
 def menu_reportes_funcional():
 
     while True:
-
+        limpiar_pantalla()
         try:
 
             menu_reportes()
@@ -198,28 +217,34 @@ def menu_reportes_funcional():
 
             if opc == 1:
                 listar_clientes()
+                limpiar_pantalla()
 
             elif opc == 2:
                 listar_proveedores()
+                limpiar_pantalla()
 
             elif opc == 3:
                 materia_prima()
+                limpiar_pantalla()
 
             elif opc == 4:
                 productos_finales()
+                limpiar_pantalla()
 
             elif opc == 5:
                 ventas()
+                limpiar_pantalla()
 
             elif opc == 6:
-                print("Reporte de órdenes de producción...")
+                listar_ordenes_produccion()
+                limpiar_pantalla()
 
             elif opc == 7:
                 break
 
             else:
-                print("Opción inválida")
+                input("\nOpción inválida.\nPresina Enter para continuar...")
 
         except:
-            print("Ingrese un valor válido")
+            input("\nIngrese un valor válido.\nPresiona Enter para continuar...")
 

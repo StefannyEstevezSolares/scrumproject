@@ -1,26 +1,18 @@
 {
-    "cli-001": {
-        "nombre_empresa": "Boutique Moda Joven",
-        "direccion": "Centro Comercial Galerías, Local 12",
-        "telefono": "2333-8899",
-        "contacto_principal": "Ana Rodríguez",
+    "00000000-1111-2222-3333-444455556666": {
+        "nombre_empresa": "Almacenes La Elegancia",
+        "direccion": "6ta Avenida 10-20, Zona 1",
+        "telefono": "2255-8800",
+        "contacto_principal": "Sofía Méndez",
+        "celular": "3344-5566",
+        "email": "compras@laelegancia.com.gt"
+    },
+    "abababab-cdcd-efef-1212-343434343434": {
+        "nombre_empresa": "Boutique El Estilo Moderno",
+        "direccion": "Centro Comercial Pradera, Local 45",
+        "telefono": "2339-1122",
+        "contacto_principal": "Mario Estrada",
         "celular": "5566-7788",
-        "email": "compras@modajoven.com"
-    },
-    "cli-002": {
-        "nombre_empresa": "Tiendas Departamentales El Sol",
-        "direccion": "Blvd. Principal 45-67, Zona 10",
-        "telefono": "2211-0000",
-        "contacto_principal": "Mario Castillo",
-        "celular": "3322-1100",
-        "email": "proveedores@elsol.com"
-    },
-    "53e0bd20-9e0c-4b59-b1a3-b52301eadcea": {
-        "nombre_empresa": "puma",
-        "direccion": "123",
-        "telefono": "12344321",
-        "contacto_principal": "12121212",
-        "celular": "09988767",
-        "email": "q@hola.com"
+        "email": "contacto@estilomoderno.gt"
     }
 }

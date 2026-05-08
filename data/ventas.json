@@ -1,23 +1,23 @@
 {
-  "ov-001": {
-    "codigo_cliente": "cli-001",
-    "codigos_productos": {
-      "prod-001": 30,
-      "prod-002": 15
+    "aabbccdd-eeff-0011-2233-445566778899": {
+        "codigo_cliente": "00000000-1111-2222-3333-444455556666",
+        "codigos_productos": {
+            "88888888-4444-4444-4444-121212121212": 10
+        },
+        "total": 3500.0,
+        "fecha_inicio": "08-05-2026",
+        "fecha_entrega": "12-05-2026",
+        "estado": "Pendiente"
     },
-    "total": 7650.00,
-    "fecha_inicio": "2026-05-05",
-    "fecha_entrega": "2026-05-08",
-    "estado": "Enviado"
-  },
-  "ov-002": {
-    "codigo_cliente": "cli-002",
-    "codigos_productos": {
-      "prod-001": 100
-    },
-    "total": 18500.00,
-    "fecha_inicio": "2026-05-06",
-    "fecha_entrega": "2026-05-12",
-    "estado": "Pendiente"
-  }
+    "12345678-90ab-cdef-1234-567890abcdef": {
+        "codigo_cliente": "abababab-cdcd-efef-1212-343434343434",
+        "codigos_productos": {
+            "77777777-1111-1111-1111-222222222222": 5,
+            "66666666-2222-2222-2222-333333333333": 10
+        },
+        "total": 10250.0,
+        "fecha_inicio": "08-05-2026",
+        "fecha_entrega": "10-05-2026",
+        "estado": "En Proceso"
+    }
 }
