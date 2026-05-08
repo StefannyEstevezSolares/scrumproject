@@ -97,7 +97,7 @@ def menu_proveedores_funcional():
                 limpiar_pantalla()
 
             elif opc == 2:
-                input_transaccion_proveedores
+                input_transaccion_proveedores()
                 limpiar_pantalla()
 
             elif opc == 3:
