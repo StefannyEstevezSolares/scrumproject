@@ -3,7 +3,7 @@
         "nombre": "Tela Denim Premium 14oz",
         "descripcion": "Tela de mezclilla gruesa para pantalones, rollo de 50m",
         "codigo_proveedor": "7d3c8e1a-4b92-4f3e-8d2a-1c5b9a8f7e6d",
-        "stock": 200,
+        "stock": 150,
         "precio_unidad": 1250.0,
         "fecha_adquisicion": "01-05-2026",
         "fecha_vencimiento (si aplica)": "No aplica"
@@ -21,7 +21,7 @@
         "nombre": "Seda Natural Italiana",
         "descripcion": "Tela de seda lisa para alta costura, rollo de 20m",
         "codigo_proveedor": "3e4d5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a",
-        "stock": 80,
+        "stock": 60,
         "precio_unidad": 2100.0,
         "fecha_adquisicion": "06-05-2026",
         "fecha_vencimiento (si aplica)": "No aplica"
