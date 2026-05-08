@@ -192,7 +192,7 @@ scrumproject/
   </tr>
   <tr>
     <td align="center">
-      <img src="./images/Proveedor_registrado.png" width="450"><br>
+      <img src="./images/proveedor_registrado.png" width="450"><br>
       Proveedores registrados
     </td>
     <td align="center">
