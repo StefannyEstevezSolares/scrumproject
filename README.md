@@ -105,6 +105,7 @@ scrumproject/
 ├── db.py
 ├── generar_reportes.py
 ├── gestion_clientes.py
+├── gestion_ordenes.py
 ├── gestion_materiaprima.py
 ├── gestion_productosfinales.py
 ├── gestion_proveedores.py
@@ -175,6 +176,81 @@ scrumproject/
       <img src="./images/Menu_Reportes.png" width="450"><br>
       Menu de Reportes
     </td>
+    <tr>
+     <td align="center">
+      <img src="./images/Registro_Cliente.png" width="450"><br>
+      Registro de clientes
+    </td>
+    <td align="center">
+      <img src="./images/Cliente_registrado.png" width="450"><br>
+      Cliente registrado en json
+    </td>
+    <td align="center">
+      <img src="./images/Registro_proveedor.png" width="450"><br>
+      Registro de proveedores
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./images/Proveedor_registrado.png" width="450"><br>
+      Proveedores registrados
+    </td>
+    <td align="center">
+      <img src="./images/Registro_transacción_proveedor.png" width="450"><br>
+      Registro transacción proveedores
+    </td>
+    <td align="center">
+      <img src="./images/Transacción_proveedor_registrado.png" width="450"><br>
+      Transacciones proveedores registradas
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./images/Registro_materia_prima.png" width="450"><br>
+      Registro materia prima
+    </td>
+    <td align="center">
+      <img src="./images/Materia_prima_registrada.png" width="450"><br>
+      Materia prima registrada
+    </td>
+    <td align="center">
+      <img src="./images/Registro_producto_final.png" width="450"><br>
+      Registro de producto final
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./images/Producto_final_agregado.png" width="450"><br>
+      Producto final registrado
+    </td>
+    <td align="center">
+      <img src="./images/Registro_orden_producción.png" width="450"><br>
+      Registro orden de producción
+    </td>
+    <td align="center">
+      <img src="./images/Orden_producción_agregado.png" width="450"><br>
+      Orden de producción registrada
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./images/Registro_venta.png" width="450"><br>
+      Registro venta
+    </td>
+    <td align="center">
+      <img src="./images/Venta_registrada.png" width="450"><br>
+      Venta registada
+    </td>
+    <td align="center">
+      <img src="./images/Registro_cambio_estado_venta.png" width="450"><br>
+      Registro cambio de estado venta
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./images/Cambio_estado_venta_registrada.png" width="450"><br>
+      Cambio de estado venta registrada
+    </td>
   </tr>
 </table>
 
@@ -182,9 +258,7 @@ scrumproject/
 
 - Implementar interfaz gráfica (GUI) con Tkinter o similar.
 - Agregar autenticación de usuarios.
-- Integrar base de datos relacional (SQLite o PostgreSQL).
 - Generar reportes en PDF.
-- Agregar módulo de órdenes de producción.
 - Implementar notificaciones por email.
 
 ## 👥 Autores
