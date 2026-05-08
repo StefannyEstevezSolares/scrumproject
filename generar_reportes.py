@@ -376,8 +376,8 @@ def listar_ordenes_produccion():
                 return
 
         titulo = "Reporte de Órdenes de Producción"
-        encabezados = ["ID", "Producto", "Materias Primas", "Fecha Inicio", "Fecha Fin", "Estado"]
-        alineaciones = ["left", "left", "left", "center", "center", "center"]
+        encabezados = ["ID", "Producto", "Materias Primas", "Producción", "Fecha Inicio", "Fecha Fin", "Estado"]
+        alineaciones = ["left", "left", "left", "center", "center", "center", "center"]
         filas = []
 
         for id_orden, orden in ordenes.items():
@@ -396,6 +396,7 @@ def listar_ordenes_produccion():
                 id_orden, 
                 nombre_producto, 
                 materias_str, 
+                orden["cantidad_producir"], 
                 orden["fecha_inicio"], 
                 orden["fecha_finalizacion"], 
                 orden["estado"]

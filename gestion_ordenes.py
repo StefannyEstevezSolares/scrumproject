@@ -11,6 +11,7 @@ def mostrar_datos(datos):
     for codigo in datos["materias_primas"]:
         print(f"  - {datos['materias_primas'][codigo][0]} X{datos['materias_primas'][codigo][1]}")
 
+    print(f"Cantidad a producir: {datos['cantidad_producir']}")
     print(f"Fecha de Inicio: {datos['fecha_inicio']}")
     print(f"Fecha de Finalización: {datos['fecha_finalizacion']}")
     print(f"Estado: {datos['estado']}\n")
@@ -25,6 +26,7 @@ def crear_orden_produccion():
         "codigos_excluidos_materias_primas": [],
         "materias_primas": {}, # {"codigo": [nombre, cantidad]. "codigo2": [nombre, cantidad]}
         "cantidad": [],
+        "cantidad_producir": 0,
         "fecha_inicio": "",
         "fecha_finalizacion": "",
         "estado": "Creando"
@@ -62,6 +64,7 @@ def crear_orden_produccion():
             producto_seleccionado = list(productos_finales.items())[int(input_producto) - 1]
             datos["producto"] = producto_seleccionado[1]['nombre']
             datos["producto_codigo"] = producto_seleccionado[0]
+            continue
 
         if ingresat_materia_prima:
             for codigo in datos["codigos_excluidos_materias_primas"]:
@@ -115,6 +118,19 @@ def crear_orden_produccion():
             datos["cantidad"].append(cantidad_materia)
             continue
 
+        if datos["cantidad_producir"] == 0:
+            cantidad_producir_input = input("\nIngrese la cantidad a producir: ").strip()
+
+            if not cantidad_producir_input.isdigit() or int(cantidad_input) <= 0:
+                print("\nCantidad inválida. Debe ser un número entero positivo o mayor a 0.")
+                input("Presione Enter para continuar...")
+                continue
+
+            cantidad_producir_input = int(cantidad_producir_input)
+
+            datos["cantidad_producir"] = cantidad_producir_input
+            continue
+
         if not datos["fecha_inicio"]:
             fecha_inicio = input("\nIngrese la fecha de inicio (DD-MM-AAAA): ").strip()
             if not validar_fecha(fecha_inicio):
@@ -143,6 +159,7 @@ def crear_orden_produccion():
         "producto": datos["producto_codigo"],
         "codigos_materias_primas": datos["codigos_materias_primas"],
         "cantidad": datos["cantidad"],
+        "cantidad_producir": datos["cantidad_producir"],
         "fecha_inicio": datos["fecha_inicio"],
         "fecha_finalizacion": datos["fecha_finalizacion"],
         "estado": datos["estado"]
